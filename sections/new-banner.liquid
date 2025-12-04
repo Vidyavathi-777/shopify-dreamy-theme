@@ -1,0 +1,115 @@
+
+<div class="home-banner pos-relative">
+    <img src="{{ section.settings.banner_img | image_url }}" alt="banner Image" width="{{ section.settings.banner_img.width | default: 1600 }}" height="{{ section.settings.banner_img.height | default: 900 }}" >
+    <div class="content pos-abs">
+        <div class="container">
+            <h6>{{section.settings.mini-text}}</h6>
+            <h1>{{section.settings.title}}</h1>
+            <p>{{section.settings.content}}</p>
+            <a href="{{section.settings.url}}">Shop Now</a>
+        </div>
+    </div>
+
+</div>
+
+{%  stylesheet  %}
+.home-banner {
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    position: relative;
+    min-height: 300px; /* ensures preview shows even without image */
+}
+
+/* Banner Text Content */
+.home-banner .content {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+    .content a{
+        display: block;
+        background: #cc4d0f;
+        color: #fff;
+        text-decoration: none;
+        width: fit-content;
+        padding: 10px 2em;
+        margin: 2em 0 0;
+        font-weight: 600;
+    }
+    body .home-banner{
+        font-size: 14px;
+        color: #121212;
+        margin: 0;
+    }
+    body .home-banner h1{
+        margin: 0.5em 0 0.5em;
+        font-size: 30px;
+
+    }
+    body .home-banner p{
+        margin: 0;
+
+    }
+    .home-banner p{
+        max-width: 300px;
+        width: 100%;
+        margin: 0.5em 0 0;
+        font-weight:  300;
+    }
+.home-banner img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+    object-position: left;
+    display: block;
+}
+  {% endstylesheet %} 
+
+
+
+
+
+{% schema  %}
+{
+    "name":"Banner",
+    "class":"banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id":"banner_img",
+            "label": "Banner image"
+        },
+        {
+            "type": "text",
+            "id":"mini-text",
+            "label":"Mini text",
+            "default":"New Arrival"
+        },
+        {
+            "type": "text",
+            "id":"title",
+            "label": "Tilte",
+            "default": "Title"
+        },
+        {
+            "type": "text",
+            "id":"content",
+            "label":"Content",
+            "default":"Award winning products"
+        },
+        {
+            "type":"url",
+            "id":"url",
+            "label": "URL"
+        }
+    ],
+    "presets": [
+        {
+            "name":"Home Banner"
+        }
+    ]
+}
+  {% endschema %}

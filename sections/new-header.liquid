@@ -1,0 +1,366 @@
+{% schema  %} 
+ {
+    "name":"Header",
+    "class":"top-new-header",
+    "settings": [
+        {
+            "type":"image_picker",
+            "id":"logo",
+            "label": "Logo Image"
+        }
+    ],
+    "blocks": [
+        {
+            "name":"header menu",
+            "type": "menu",
+            "settings": [
+                {
+                    "type": "text",
+                    "id":"name",
+                    "label": "menu name"
+                },
+                {
+                    "type": "url",
+                    "id":"linkurl",
+                    "label": "Link url"
+                }
+            ]
+        }
+    ]
+ }
+ {% endschema %}
+ <style>
+   body:not(.index) .top-new-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee;
+}
+
+/* FIXED: log-menu → logo-menu */
+.logo-menu {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    max-width: 530px;
+    width: 100%;
+}
+
+.new-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 1em 0;
+}
+
+.new-header img {
+    object-fit: cover;
+    max-width: 120px;
+    width: 100%;
+    height: auto;
+}
+
+.toggle-sidecart {
+    position: relative;
+}
+
+a.logoimg {
+    text-align: center;
+}
+
+.logo-menu .links {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.logo-menu a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #000;
+}
+
+.new-header .search {
+    flex: 2;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    max-width: 348px;
+    width: 100%;
+}
+
+.search form {
+    border: 1px solid #eee;
+    border-radius: 40px;
+    overflow: hidden;
+    background: #f5f5f5;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    padding: 1em 1.5em;
+    background: #f5f5f5;
+    border: none;
+}
+
+.search button.search-header__submit {
+    background: #333;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+}
+
+.new-header .icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.new-header .icons a.account img,
+.new-header .icons a.cart img {
+    height: 24px;
+    width: 24px;
+}
+
+.js-cartcount {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #333;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: white;
+    border-radius: 50%;
+}
+
+.icons a {
+    text-decoration: none;
+    color: #000;
+}
+
+.searchResults {
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    width: 100%;
+}
+
+.result-heading {
+    padding: 2em 0;
+    text-align: center;
+}
+
+.new-header .search #searchResults p.no-result {
+    padding: 1em 1em 0.5em;
+}
+
+.top-new-header input#searchInput:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+#searchResults .product-card {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1em;
+}
+
+#searchResults .product-card:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+#searchResults .product-card img {
+    width: 70px;
+    height: 70px;
+}
+
+#searchResults .grid-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+#searchResults p {
+    margin: 0 0 4px;
+    font-weight: 600;
+}
+
+/* Outer wrapper spacing */
+.top-new-header {
+    padding: 0.8rem 0;
+    background: #ffffff;
+}
+
+/* Main header flex layout */
+.new-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+/* Left side: logo + menu */
+.log-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Logo styling */
+.log-menu .logoimg img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Menu links */
+.log-menu .links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.log-menu .links a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* SEARCH BOX STYLING */
+.search {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+}
+
+.search form {
+    background: #eee;
+    border-radius: 40px;
+    width: 100%;
+    position: relative;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+/* Search input */
+.search input {
+    flex: 1;
+    border: none;
+    background: #eee;
+    outline: none;
+    padding-left: 0.5rem;
+    font-size: 14px;
+}
+
+/* Search submit button */
+.search button.search-header__submit {
+    background: #333;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Right side icons */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+.icons img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Cart count bubble */
+.js-cartcount {
+    background: #333;
+    color: #fff;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+}
+
+/* Make sure the search results box works properly */
+.searchResults {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    margin-top: 0.5rem;
+    z-index: 10;
+}
+
+
+ </style>
+
+ <div class="container">
+    <div class="new-header">
+        <div class="log-menu">
+            <a href="/" class="logoimg">
+                <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="Logo" width="180" height="180">
+            </a>
+            <div class="links">
+                {%for block in section.blocks %}
+                    <a href="{{ block.settings.linkurl }}" class="link">{{ block.settings.name }}</a>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="search">
+            <form action="/search" method="get" role="search" id="searchForm">
+                <input type="search" name="q" id="searchInput" aria-label="Search our Site " placeholder="Search" class="search-header__input">
+                <button type="submit" class="search-header__submit">
+                    <img src="{{ 'search-icon.png' | asset_url }}" alt="Search" width="24" height="24">
+                </button>
+            </form>
+            <div class="searchResults"></div>
+        </div>
+        <div class="icons">
+            <a href="/account/login" class="cart">
+                <img src="{{ 'user.png' | asset_img_url:'medium' }}" alt="User Account" width="24" height="24">
+            </a>
+            <a href="/cart" class="cart toggle-sidecart">
+                <span class="js-cartcount">{{cart.item_count}}</span>
+                <img src="{{ 'cart.png' | asset_img_url:'medium' }}" alt="Shopping Cart" width="24" height="24">
+            </a>
+        </div>
+    </div>
+ </div>
