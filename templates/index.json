@@ -296,11 +296,50 @@
         "content": "Timeless Luxury with Premium quality . FREE DELIVERY and 60 noght sleep Guarantee",
         "url": ""
       }
+    },
+    "browse_collections_CWVTzc": {
+      "type": "browse-collections",
+      "blocks": {
+        "collection_qHgiKx": {
+          "type": "collection",
+          "settings": {
+            "get_collection": "mattress-toppers",
+            "col_img": "shopify://shop_images/premium_mattress_topper_52886535-cec5-4f5e-8d9d-50c57e35181e.jpg"
+          }
+        },
+        "collection_mQRaBf": {
+          "type": "collection",
+          "settings": {
+            "get_collection": "best-pillow",
+            "col_img": "shopify://shop_images/best-pillow.jpg"
+          }
+        },
+        "collection_mrLFF8": {
+          "type": "collection",
+          "settings": {
+            "get_collection": "best-selling",
+            "col_img": "shopify://shop_images/exclusive-mattress.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_qHgiKx",
+        "collection_mQRaBf",
+        "collection_mrLFF8"
+      ],
+      "name": "Browse Collections",
+      "settings": {
+        "title": "Browse the range",
+        "paragraph": "elegant, timeless & Functionl products",
+        "padding_top": 1,
+        "padding_bottom": 1
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "new_banner_qmxBaA"
+    "new_banner_qmxBaA",
+    "browse_collections_CWVTzc"
   ]
 }
